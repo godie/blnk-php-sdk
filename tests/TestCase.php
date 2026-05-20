@@ -87,7 +87,7 @@ abstract class TestCase extends PHPUnitTestCase
     /**
      * Require Blnk to be available, and fail with a clear message if not.
      *
-     * @throws \PHPUnit\Framework\SkippedTestError When Blnk is not available.
+     * @return BlnkClient
      */
     protected function requireBlnk(): BlnkClient
     {

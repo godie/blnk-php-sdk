@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncMetadata — Promise-returning metadata operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -25,7 +25,7 @@ class AsyncMetadata
      *
      * @param  string $entityId Entity ID (e.g., "ldg_...", "txn_...", "bln_...", "id_...").
      * @param  array  $metaData Key-value pairs to set as metadata.
-     * @return PromiseInterface<array> The updated metadata.
+     * @return PromiseInterface The updated metadata.
      */
     public function update(string $entityId, array $metaData): PromiseInterface
     {

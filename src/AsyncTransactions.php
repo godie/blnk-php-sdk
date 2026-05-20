@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncTransactions — Promise-returning transaction operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -30,7 +30,7 @@ class AsyncTransactions
      *              sources[], destinations[], meta_data, effective_date,
      *              overdraft_limit, precise_amount
      * }
-     * @return PromiseInterface<array> The created transaction.
+     * @return PromiseInterface The created transaction.
      */
     public function create(array $data): PromiseInterface
     {
@@ -44,7 +44,7 @@ class AsyncTransactions
      *     transactions: Transaction[]
      *     Optional: inflight, atomic, run_async, skip_queue
      * }
-     * @return PromiseInterface<array> Batch result (includes batch_id, status, transaction_count).
+     * @return PromiseInterface Batch result (includes batch_id, status, transaction_count).
      */
     public function createBulk(array $data): PromiseInterface
     {
@@ -55,7 +55,7 @@ class AsyncTransactions
      * Get a transaction by its ID (async).
      *
      * @param  string $id Transaction ID (e.g., "txn_...").
-     * @return PromiseInterface<array> The transaction.
+     * @return PromiseInterface The transaction.
      */
     public function get(string $id): PromiseInterface
     {
@@ -66,7 +66,7 @@ class AsyncTransactions
      * Get a transaction by its reference (async).
      *
      * @param  string $reference Transaction reference.
-     * @return PromiseInterface<array> The transaction.
+     * @return PromiseInterface The transaction.
      */
     public function getByReference(string $reference): PromiseInterface
     {
@@ -78,7 +78,7 @@ class AsyncTransactions
      *
      * @param  int   $limit  Number of records (default 20).
      * @param  int   $offset Pagination offset (default 0).
-     * @return PromiseInterface<array> Array of transactions.
+     * @return PromiseInterface Array of transactions.
      */
     public function all(int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -91,7 +91,7 @@ class AsyncTransactions
      * @param  array $filters Associative array of field_operator => value.
      * @param  int   $limit   Number of records.
      * @param  int   $offset  Pagination offset.
-     * @return PromiseInterface<array> Array of transactions.
+     * @return PromiseInterface Array of transactions.
      */
     public function filter(array $filters = [], int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -105,7 +105,7 @@ class AsyncTransactions
      * Filter transactions via JSON body (POST /transactions/filter) (async).
      *
      * @param  array $payload Filter payload.
-     * @return PromiseInterface<array> Filtered results.
+     * @return PromiseInterface Filtered results.
      */
     public function filterWithBody(array $payload): PromiseInterface
     {
@@ -116,7 +116,7 @@ class AsyncTransactions
      * Refund a transaction by its ID (async).
      *
      * @param  string $id Transaction ID to refund.
-     * @return PromiseInterface<array> The refund transaction.
+     * @return PromiseInterface The refund transaction.
      */
     public function refund(string $id): PromiseInterface
     {
@@ -129,7 +129,7 @@ class AsyncTransactions
      * @param  string      $txId   Transaction ID.
      * @param  string      $status "commit" or "void".
      * @param  float       $amount Amount (optional, if different from original).
-     * @return PromiseInterface<array> Updated transaction.
+     * @return PromiseInterface Updated transaction.
      */
     public function updateInflightStatus(string $txId, string $status, float $amount = 0): PromiseInterface
     {
@@ -144,7 +144,7 @@ class AsyncTransactions
      * Get the fund lineage for a transaction (async).
      *
      * @param  string $id Transaction ID.
-     * @return PromiseInterface<array> Lineage data.
+     * @return PromiseInterface Lineage data.
      */
     public function lineage(string $id): PromiseInterface
     {
@@ -155,7 +155,7 @@ class AsyncTransactions
      * Recover stuck queued transactions (async).
      *
      * @param  string $threshold Minimum age of transactions to recover (e.g., "5m", "10m"). Defaults to "2m".
-     * @return PromiseInterface<array> Recovery result with count of recovered transactions.
+     * @return PromiseInterface Recovery result with count of recovered transactions.
      */
     public function recoverQueued(string $threshold = '2m'): PromiseInterface
     {

@@ -29,7 +29,7 @@ final class Promises
      * Rejects immediately if ANY reject.
      *
      * @param  array<string, PromiseInterface> $promises
-     * @return PromiseInterface<array<string, array>>
+     * @return PromiseInterface
      */
     public static function all(array $promises): PromiseInterface
     {
@@ -41,7 +41,7 @@ final class Promises
      * Never rejects — check each result's 'state' field.
      *
      * @param  array<string, PromiseInterface> $promises
-     * @return PromiseInterface<array<string, array{state: string, value?: array, reason?: \Throwable}>>
+     * @return PromiseInterface
      */
     public static function settle(array $promises): PromiseInterface
     {
@@ -63,7 +63,7 @@ final class Promises
     /**
      * Create a resolved promise with the given value.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public static function resolved(array $value): PromiseInterface
     {
@@ -73,7 +73,7 @@ final class Promises
     /**
      * Create a rejected promise with the given exception.
      *
-     * @return PromiseInterface<never>
+     * @return PromiseInterface
      */
     public static function rejected(\Throwable $reason): PromiseInterface
     {

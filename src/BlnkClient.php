@@ -136,7 +136,7 @@ class BlnkClient
     /**
      * Send an async GET request. Returns a promise that resolves to array.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public function getAsync(string $path, array $query = []): PromiseInterface
     {
@@ -146,7 +146,7 @@ class BlnkClient
     /**
      * Send an async POST request. Returns a promise that resolves to array.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public function postAsync(string $path, array $body = [], array $query = []): PromiseInterface
     {
@@ -156,7 +156,7 @@ class BlnkClient
     /**
      * Send an async PUT request. Returns a promise that resolves to array.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public function putAsync(string $path, array $body = [], array $query = []): PromiseInterface
     {
@@ -166,7 +166,7 @@ class BlnkClient
     /**
      * Send an async DELETE request. Returns a promise that resolves to array.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public function deleteAsync(string $path, array $query = []): PromiseInterface
     {
@@ -176,7 +176,7 @@ class BlnkClient
     /**
      * Async file upload. Returns a promise that resolves to array.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public function uploadFileAsync(string $path, string $filePath, array $extraFields = []): PromiseInterface
     {
@@ -270,7 +270,7 @@ class BlnkClient
     /**
      * Low-level async request dispatcher. Returns a promise that resolves to array.
      *
-     * @return PromiseInterface<array>
+     * @return PromiseInterface
      */
     public function requestAsync(string $method, string $path, array $options = []): PromiseInterface
     {

@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncReconciliation — Promise-returning reconciliation operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -24,7 +24,7 @@ class AsyncReconciliation
      *
      * @param  string $filePath Path to the file on disk.
      * @param  string $source   Source identifier (e.g., "bank_statement").
-     * @return PromiseInterface<array> Upload result (upload_id, record_count, source).
+     * @return PromiseInterface Upload result (upload_id, record_count, source).
      */
     public function upload(string $filePath, string $source): PromiseInterface
     {
@@ -40,7 +40,7 @@ class AsyncReconciliation
      *     name, description
      *     criteria[]: { field, operator, value, pattern, allowable_drift }
      * }
-     * @return PromiseInterface<array> The created matching rule.
+     * @return PromiseInterface The created matching rule.
      */
     public function createMatchingRule(array $data): PromiseInterface
     {
@@ -52,7 +52,7 @@ class AsyncReconciliation
      *
      * @param  string $id   Rule ID.
      * @param  array  $data Updated rule data.
-     * @return PromiseInterface<array> The updated matching rule.
+     * @return PromiseInterface The updated matching rule.
      */
     public function updateMatchingRule(string $id, array $data): PromiseInterface
     {
@@ -64,7 +64,7 @@ class AsyncReconciliation
      * Delete a matching rule (async).
      *
      * @param  string $id Rule ID.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function deleteMatchingRule(string $id): PromiseInterface
     {
@@ -79,7 +79,7 @@ class AsyncReconciliation
      * @param  string[] $matchingRuleIds  Array of matching rule IDs.
      * @param  string   $groupingCriteria Grouping criteria (optional).
      * @param  bool     $dryRun           Whether to do a dry run (default false).
-     * @return PromiseInterface<array>    Result with reconciliation_id.
+     * @return PromiseInterface    Result with reconciliation_id.
      */
     public function start(
         string $uploadId,
@@ -108,7 +108,7 @@ class AsyncReconciliation
      * @param  string[] $matchingRuleIds      Array of matching rule IDs.
      * @param  string   $groupingCriteria     Grouping criteria (optional).
      * @param  bool     $dryRun               Whether to do a dry run.
-     * @return PromiseInterface<array>        Result with reconciliation_id.
+     * @return PromiseInterface        Result with reconciliation_id.
      */
     public function startInstant(
         array $externalTransactions,
@@ -133,7 +133,7 @@ class AsyncReconciliation
      * Get reconciliation details by its ID (async).
      *
      * @param  string $id Reconciliation ID.
-     * @return PromiseInterface<array> Reconciliation details.
+     * @return PromiseInterface Reconciliation details.
      */
     public function get(string $id): PromiseInterface
     {

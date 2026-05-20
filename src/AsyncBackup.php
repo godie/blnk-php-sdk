@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncBackup — Promise-returning backup operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -22,7 +22,7 @@ class AsyncBackup
     /**
      * Create a database backup on disk (async).
      *
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function toDisk(): PromiseInterface
     {
@@ -32,7 +32,7 @@ class AsyncBackup
     /**
      * Create a database backup and store in S3 (async).
      *
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function toS3(): PromiseInterface
     {

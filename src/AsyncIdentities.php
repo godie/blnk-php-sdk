@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncIdentities — Promise-returning identity operations (includes tokenization).
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -28,7 +28,7 @@ class AsyncIdentities
      *     organization_name, category, street, country, state,
      *     post_code, city, meta_data
      * }
-     * @return PromiseInterface<array> The created identity.
+     * @return PromiseInterface The created identity.
      */
     public function create(array $data): PromiseInterface
     {
@@ -39,7 +39,7 @@ class AsyncIdentities
      * Get an identity by its ID (async).
      *
      * @param  string $id Identity ID (e.g., "id_...").
-     * @return PromiseInterface<array> The identity.
+     * @return PromiseInterface The identity.
      */
     public function get(string $id): PromiseInterface
     {
@@ -51,7 +51,7 @@ class AsyncIdentities
      *
      * @param  string $id   Identity ID.
      * @param  array  $data Updated identity fields.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function update(string $id, array $data): PromiseInterface
     {
@@ -62,7 +62,7 @@ class AsyncIdentities
      * Delete an identity (async).
      *
      * @param  string $id Identity ID.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function delete(string $id): PromiseInterface
     {
@@ -74,7 +74,7 @@ class AsyncIdentities
      *
      * @param  int   $limit  Number of records (default 20).
      * @param  int   $offset Pagination offset (default 0).
-     * @return PromiseInterface<array> Array of identities.
+     * @return PromiseInterface Array of identities.
      */
     public function all(int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -87,7 +87,7 @@ class AsyncIdentities
      * @param  array $filters Associative array of field_operator => value.
      * @param  int   $limit   Number of records.
      * @param  int   $offset  Pagination offset.
-     * @return PromiseInterface<array> Array of identities.
+     * @return PromiseInterface Array of identities.
      */
     public function filter(array $filters = [], int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -101,7 +101,7 @@ class AsyncIdentities
      * Filter identities via JSON body (POST /identities/filter) (async).
      *
      * @param  array $payload Filter payload.
-     * @return PromiseInterface<array> Filtered results.
+     * @return PromiseInterface Filtered results.
      */
     public function filterWithBody(array $payload): PromiseInterface
     {
@@ -113,7 +113,7 @@ class AsyncIdentities
      *
      * @param  string $id    Identity ID.
      * @param  string $field Field name to tokenize.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function tokenizeField(string $id, string $field): PromiseInterface
     {
@@ -125,7 +125,7 @@ class AsyncIdentities
      *
      * @param  string $id    Identity ID.
      * @param  string $field Field name to detokenize.
-     * @return PromiseInterface<array> The original field value.
+     * @return PromiseInterface The original field value.
      */
     public function detokenizeField(string $id, string $field): PromiseInterface
     {
@@ -137,7 +137,7 @@ class AsyncIdentities
      *
      * @param  string   $id     Identity ID.
      * @param  string[] $fields Field names to tokenize.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function tokenize(string $id, array $fields): PromiseInterface
     {
@@ -149,7 +149,7 @@ class AsyncIdentities
      *
      * @param  string   $id     Identity ID.
      * @param  string[] $fields Field names to detokenize (empty = all tokenized fields).
-     * @return PromiseInterface<array> The original field values.
+     * @return PromiseInterface The original field values.
      */
     public function detokenize(string $id, array $fields = []): PromiseInterface
     {
@@ -160,7 +160,7 @@ class AsyncIdentities
      * List all tokenized fields for an identity (async).
      *
      * @param  string $id Identity ID.
-     * @return PromiseInterface<array> List of tokenized field names.
+     * @return PromiseInterface List of tokenized field names.
      */
     public function tokenizedFields(string $id): PromiseInterface
     {

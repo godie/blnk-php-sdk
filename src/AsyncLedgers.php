@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncLedgers — Promise-returning ledger operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -24,7 +24,7 @@ class AsyncLedgers
      *
      * @param  string       $name     Ledger name (required).
      * @param  array        $metaData Optional metadata key-value pairs.
-     * @return PromiseInterface<array> The created ledger.
+     * @return PromiseInterface The created ledger.
      */
     public function create(string $name, array $metaData = []): PromiseInterface
     {
@@ -38,7 +38,7 @@ class AsyncLedgers
      * Get a ledger by its ID (async).
      *
      * @param  string $id Ledger ID (e.g., "ldg_...").
-     * @return PromiseInterface<array> The ledger.
+     * @return PromiseInterface The ledger.
      */
     public function get(string $id): PromiseInterface
     {
@@ -50,7 +50,7 @@ class AsyncLedgers
      *
      * @param  int    $limit  Number of records (default 10).
      * @param  int    $offset Offset for pagination (default 0).
-     * @return PromiseInterface<array> Array of ledgers.
+     * @return PromiseInterface Array of ledgers.
      */
     public function all(int $limit = 10, int $offset = 0): PromiseInterface
     {
@@ -63,7 +63,7 @@ class AsyncLedgers
      * @param  array $filters Associative array of field_operator => value.
      * @param  int   $limit   Number of records.
      * @param  int   $offset  Offset for pagination.
-     * @return PromiseInterface<array> Array of ledgers.
+     * @return PromiseInterface Array of ledgers.
      */
     public function filter(array $filters = [], int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -77,7 +77,7 @@ class AsyncLedgers
      * Filter ledgers via JSON body (POST /ledgers/filter) (async).
      *
      * @param  array $payload Filter payload as described in the API docs.
-     * @return PromiseInterface<array> Filtered results (may include 'total_count').
+     * @return PromiseInterface Filtered results (may include 'total_count').
      */
     public function filterWithBody(array $payload): PromiseInterface
     {
@@ -89,7 +89,7 @@ class AsyncLedgers
      *
      * @param  string $id   Ledger ID.
      * @param  string $name New name.
-     * @return PromiseInterface<array> Updated ledger.
+     * @return PromiseInterface Updated ledger.
      */
     public function update(string $id, string $name): PromiseInterface
     {

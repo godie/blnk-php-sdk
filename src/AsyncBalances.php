@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncBalances — Promise-returning balance operations (includes monitors).
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -28,7 +28,7 @@ class AsyncBalances
      *     Required: ledger_id, currency
      *     Optional: identity_id, precision, meta_data, track_fund_lineage, allocation_strategy (FIFO|LIFO|PROPORTIONAL)
      * }
-     * @return PromiseInterface<array> The created balance.
+     * @return PromiseInterface The created balance.
      */
     public function create(array $data): PromiseInterface
     {
@@ -41,7 +41,7 @@ class AsyncBalances
      * @param  string $id         Balance ID (e.g., "bln_...").
      * @param  array  $includes   Optional related data to include.
      * @param  bool   $withQueued Include queued transactions in the balance.
-     * @return PromiseInterface<array> The balance.
+     * @return PromiseInterface The balance.
      */
     public function get(string $id, array $includes = [], bool $withQueued = false): PromiseInterface
     {
@@ -60,7 +60,7 @@ class AsyncBalances
      *
      * @param  int   $limit  Number of records (default 10).
      * @param  int   $offset Pagination offset (default 0).
-     * @return PromiseInterface<array> Array of balances.
+     * @return PromiseInterface Array of balances.
      */
     public function all(int $limit = 10, int $offset = 0): PromiseInterface
     {
@@ -73,7 +73,7 @@ class AsyncBalances
      * @param  array $filters Associative array of field_operator => value.
      * @param  int   $limit   Number of records.
      * @param  int   $offset  Pagination offset.
-     * @return PromiseInterface<array> Array of balances.
+     * @return PromiseInterface Array of balances.
      */
     public function filter(array $filters = [], int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -87,7 +87,7 @@ class AsyncBalances
      * Filter balances via JSON body (POST /balances/filter) (async).
      *
      * @param  array $payload Filter payload.
-     * @return PromiseInterface<array> Filtered results.
+     * @return PromiseInterface Filtered results.
      */
     public function filterWithBody(array $payload): PromiseInterface
     {
@@ -99,7 +99,7 @@ class AsyncBalances
      *
      * @param  string $indicator The balance indicator.
      * @param  string $currency  The currency code (e.g., "USD").
-     * @return PromiseInterface<array> The balance.
+     * @return PromiseInterface The balance.
      */
     public function getByIndicator(string $indicator, string $currency): PromiseInterface
     {
@@ -112,7 +112,7 @@ class AsyncBalances
      * @param  string      $balanceId  Balance ID.
      * @param  string|null $timestamp  ISO 8601 timestamp (null = current time).
      * @param  bool        $fromSource Calculate from source transactions.
-     * @return PromiseInterface<array> Balance state at the given time.
+     * @return PromiseInterface Balance state at the given time.
      */
     public function getAtTime(string $balanceId, ?string $timestamp = null, bool $fromSource = false): PromiseInterface
     {
@@ -130,7 +130,7 @@ class AsyncBalances
      * Trigger daily balance snapshots (async).
      *
      * @param  int   $batchSize Batch size for processing (default 1000).
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function takeSnapshots(int $batchSize = 1000): PromiseInterface
     {
@@ -142,7 +142,7 @@ class AsyncBalances
      *
      * @param  string $balanceId  Balance ID.
      * @param  string $identityId New identity ID.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function updateIdentity(string $balanceId, string $identityId): PromiseInterface
     {
@@ -153,7 +153,7 @@ class AsyncBalances
      * Get the fund lineage for a balance (async).
      *
      * @param  string $id Balance ID.
-     * @return PromiseInterface<array> Lineage data.
+     * @return PromiseInterface Lineage data.
      */
     public function lineage(string $id): PromiseInterface
     {
@@ -169,7 +169,7 @@ class AsyncBalances
      *     Required: balance_id, condition (field, operator, value, precision)
      *     Optional: call_back_url, meta_data
      * }
-     * @return PromiseInterface<array> The created monitor.
+     * @return PromiseInterface The created monitor.
      */
     public function createMonitor(array $data): PromiseInterface
     {
@@ -180,7 +180,7 @@ class AsyncBalances
      * Get a balance monitor by its ID (async).
      *
      * @param  string $id Monitor ID.
-     * @return PromiseInterface<array> The monitor.
+     * @return PromiseInterface The monitor.
      */
     public function getMonitor(string $id): PromiseInterface
     {
@@ -190,7 +190,7 @@ class AsyncBalances
     /**
      * List all balance monitors (async).
      *
-     * @return PromiseInterface<array> Array of monitors.
+     * @return PromiseInterface Array of monitors.
      */
     public function allMonitors(): PromiseInterface
     {
@@ -201,7 +201,7 @@ class AsyncBalances
      * Get balance monitors for a specific balance (async).
      *
      * @param  string $balanceId Balance ID.
-     * @return PromiseInterface<array> Array of monitors.
+     * @return PromiseInterface Array of monitors.
      */
     public function monitorsByBalanceId(string $balanceId): PromiseInterface
     {
@@ -213,7 +213,7 @@ class AsyncBalances
      *
      * @param  string $id   Monitor ID.
      * @param  array  $data Updated monitor data.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function updateMonitor(string $id, array $data): PromiseInterface
     {
@@ -225,7 +225,7 @@ class AsyncBalances
      * Delete a balance monitor (async).
      *
      * @param  string $id Monitor ID.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function deleteMonitor(string $id): PromiseInterface
     {

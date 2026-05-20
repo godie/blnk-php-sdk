@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncAccounts — Promise-returning account operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -27,7 +27,7 @@ class AsyncAccounts
      *     Create via Balance: balance_id (required)
      *     Optional: bank_name, number, meta_data
      * }
-     * @return PromiseInterface<array> The created account.
+     * @return PromiseInterface The created account.
      */
     public function create(array $data): PromiseInterface
     {
@@ -39,7 +39,7 @@ class AsyncAccounts
      *
      * @param  string   $id       Account ID (e.g., "acc_...").
      * @param  string[] $includes Optional related data to include.
-     * @return PromiseInterface<array> The account.
+     * @return PromiseInterface The account.
      */
     public function get(string $id, array $includes = []): PromiseInterface
     {
@@ -52,7 +52,7 @@ class AsyncAccounts
      *
      * @param  int   $limit  Number of records (default 20).
      * @param  int   $offset Pagination offset (default 0).
-     * @return PromiseInterface<array> Array of accounts.
+     * @return PromiseInterface Array of accounts.
      */
     public function all(int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -65,7 +65,7 @@ class AsyncAccounts
      * @param  array $filters Associative array of field_operator => value.
      * @param  int   $limit   Number of records.
      * @param  int   $offset  Pagination offset.
-     * @return PromiseInterface<array> Array of accounts.
+     * @return PromiseInterface Array of accounts.
      */
     public function filter(array $filters = [], int $limit = 20, int $offset = 0): PromiseInterface
     {
@@ -79,7 +79,7 @@ class AsyncAccounts
      * Filter accounts via JSON body (POST /accounts/filter) (async).
      *
      * @param  array $payload Filter payload.
-     * @return PromiseInterface<array> Filtered results.
+     * @return PromiseInterface Filtered results.
      */
     public function filterWithBody(array $payload): PromiseInterface
     {
@@ -89,7 +89,7 @@ class AsyncAccounts
     /**
      * Generate a mock account for testing (async).
      *
-     * @return PromiseInterface<array> Mock account with bank_name and account_number.
+     * @return PromiseInterface Mock account with bank_name and account_number.
      */
     public function mock(): PromiseInterface
     {

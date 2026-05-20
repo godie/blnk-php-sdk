@@ -9,7 +9,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 /**
  * AsyncHooks — Promise-returning webhook operations.
  *
- * All methods return PromiseInterface<array>.
+ * All methods return PromiseInterface.
  *
  * Exception handling: BlnkException errors propagate through the promise
  * chain. Callers should handle rejections via ->then(null, $onRejected) or
@@ -26,7 +26,7 @@ class AsyncHooks
      *     Required: name, url, type (PRE_TRANSACTION or POST_TRANSACTION)
      *     Optional: active, timeout, retry_count
      * }
-     * @return PromiseInterface<array> The created hook.
+     * @return PromiseInterface The created hook.
      */
     public function create(array $data): PromiseInterface
     {
@@ -37,7 +37,7 @@ class AsyncHooks
      * Get a hook by its ID (async).
      *
      * @param  string $id Hook ID.
-     * @return PromiseInterface<array> The hook.
+     * @return PromiseInterface The hook.
      */
     public function get(string $id): PromiseInterface
     {
@@ -49,7 +49,7 @@ class AsyncHooks
      *
      * @param  string $id   Hook ID.
      * @param  array  $data Updated hook fields.
-     * @return PromiseInterface<array> The updated hook.
+     * @return PromiseInterface The updated hook.
      */
     public function update(string $id, array $data): PromiseInterface
     {
@@ -60,7 +60,7 @@ class AsyncHooks
      * List all hooks, optionally filtered by type (async).
      *
      * @param  string|null $type Hook type filter: "PRE_TRANSACTION" or "POST_TRANSACTION" (null = all).
-     * @return PromiseInterface<array> Array of hooks.
+     * @return PromiseInterface Array of hooks.
      */
     public function all(?string $type = null): PromiseInterface
     {
@@ -72,7 +72,7 @@ class AsyncHooks
      * Delete a hook (async).
      *
      * @param  string $id Hook ID.
-     * @return PromiseInterface<array> Confirmation message.
+     * @return PromiseInterface Confirmation message.
      */
     public function delete(string $id): PromiseInterface
     {

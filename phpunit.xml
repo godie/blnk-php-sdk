@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         cacheDirectory=".phpunit.cache"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         displayDetailsOnTestsThatTriggerErrors="true"
+         displayDetailsOnTestsThatTriggerNotices="true"
+         displayDetailsOnTestsThatTriggerWarnings="true">
+
+    <testsuites>
+        <testsuite name="Blnk PHP SDK Test Suite">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <!--
+            Configuration for integration tests.
+            Set these env vars or override in phpunit.xml to point at a running Blnk instance.
+
+            BLNK_BASE_URL  — Base URL of the Blnk server (default: http://localhost:5001)
+            BLNK_API_KEY   — API key or master secret key (required)
+        -->
+        <env name="BLNK_BASE_URL" value="http://localhost:5001"/>
+        <env name="BLNK_API_KEY" value=""/>
+    </php>
+
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
+</phpunit>
